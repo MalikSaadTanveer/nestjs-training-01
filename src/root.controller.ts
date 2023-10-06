@@ -34,11 +34,14 @@ export class BookController{
     }
 
     @Delete('/delete-book')
-    deleteBook():string{
-        return this.bookService.deleteBook();
+    deleteAllBooks():string{
+        return this.bookService.deleteAllBooks();
     }
 
-
+    @Delete('/delete-book/:id')
+    deleteBookById(@Param() params):string{
+        return this.bookService.deleteBookById(params.id)
+    }
     //--------------Without Providers-------------
     // @Post('/create-book')
     // createBook():string{

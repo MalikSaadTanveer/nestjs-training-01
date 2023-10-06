@@ -21,8 +21,13 @@ export class BookService{
         return "I have updated my book";
     }
 
-    deleteBook():string{
-        return "I have deleted my book";
+    deleteAllBooks():string{
+        return "I have deleted all my books";
+    };
+    
+    deleteBookById(_id:Number):string{
+        const id = _id
+        return "I have deleted my book id is " + id;
     };
 
     uploadArticle(): string{
