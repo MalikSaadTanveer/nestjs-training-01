@@ -6,7 +6,7 @@ import { BookController } from './root.controller';
 import { BookService } from './root.service';
 
 @Module({
-  imports: [OrderModule, UserModule, ChatModule],
+  imports: [],
   controllers: [BookController],
   providers: [BookService],
   exports:[]
