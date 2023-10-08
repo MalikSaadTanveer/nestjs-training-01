@@ -1,7 +1,9 @@
-import { Post } from "@nestjs/common";
+import { Injectable, } from "@nestjs/common";
 import { Book } from "./dto/books.dto";
 import { v4 as uuidv4 } from 'uuid';
 
+
+@Injectable()
 export class BookService{
     public book : Book[] =[]
 
@@ -12,14 +14,21 @@ export class BookService{
     }
 
     getAllBooks():Book[]{
-        return this.book
+        return this.book;
     }
 
     getBookById(id:string):Book{
-        return this.book[id];
+        const book = this.book?.filter(currentBook => currentBook.id === id)     
+        return book[0];
     }
 
     updateBookById(book:Book, id:string):string{
+        const currentBookId = this.book?.findIndex(currentBook => currentBook.id === id)
+        if(currentBookId >= 0){
+            return "Book not found to update"
+        }
+
+        this.book[currentBookId] = book;
         return "Book updated successfully"
     }
 
