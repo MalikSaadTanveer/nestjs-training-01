@@ -24,13 +24,13 @@ export class BookController{
     }
 
     @Put('/update-book/:id')
-    updateBookById(@Body() book: Book, @Param('id') id: string) : string{
-        return this.updateBookById(book, id);
+    updateBookById(@Body() book: Book, @Param() params) : string{
+        return this.bookService.updateBookById(book, params.id);
     }
 
     @Delete('/delete-book/:id')
     deleteBookById(@Param() id:string ){
-        return this.deleteBookById(id);
+        return this.bookService.deleteBookById(id);
     }
 
 }

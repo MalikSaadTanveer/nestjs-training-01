@@ -23,17 +23,22 @@ export class BookService{
     }
 
     updateBookById(book:Book, id:string):string{
-        const currentBookId = this.book?.findIndex(currentBook => currentBook.id === id)
-        if(currentBookId >= 0){
+        const currentBookId = this.book?.findIndex(currentBook => currentBook.id == id)
+      
+        if(currentBookId < 0){
             return "Book not found to update"
         }
-
+        book.id = id;
         this.book[currentBookId] = book;
         return "Book updated successfully"
     }
 
     deleteBookById(id:string):string{
-        this.book = this.book.filter(currentBook => currentBook.id !== id);
+        const currentBookId = this.book?.findIndex(currentBook => currentBook.id == id)
+        if(currentBookId < 0)
+            return "Book not found"
+
+        this.book = this.book.filter(currentBook => currentBook.id !== id);       
         return "Book deleted successfully"
     }
 
