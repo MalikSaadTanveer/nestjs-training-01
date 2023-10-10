@@ -38,7 +38,7 @@ export class BookService{
         if(currentBookId < 0)
             return "Book not found"
 
-        this.book = this.book.filter(currentBook => currentBook.id !== id);       
+        this.book = this.book.filter(currentBook => currentBook.id !== id)       
         return "Book deleted successfully"
     }
 
